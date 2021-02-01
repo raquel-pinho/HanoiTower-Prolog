@@ -7,7 +7,7 @@ move([Disc],'A',_,'C', [X,Y,Z], [X2,Y,Z2], C , P,1) :-
     reverse(Z, Z1), % Z1 passa a ser reverse Z
     reverse([Head|Z1], Z2), % Z2 passa a ser Z depois de adicionado o primeiro elemento de X
  
-    format("Disco ~w movido de A para C", [Disc]),
+    format("Disk ~w moved from A to C", [Disc]),
     nl,
     format("A : ~w , B: ~w , C: ~w", [X2,Y, Z2]),
     nl.
@@ -19,7 +19,7 @@ move([Disc],'B',_,'C', [X,Y,Z], [X,Y2,Z2], C, P,1) :-
     reverse(Z, Z1), 
     reverse([Head|Z1], Z2), 
  
-    format("Disco ~w movido de B para C", [Disc]),
+    format("Disk ~w moved from B to C", [Disc]),
     nl,
     format("A : ~w , B: ~w , C: ~w", [X,Y2, Z2]),
     nl.
@@ -31,7 +31,7 @@ move([Disc],'C',_,'B', [X,Y,Z], [X,Y2,Z2], C, P,1) :-
     reverse(Y, Y1), 
     reverse([Head|Y1], Y2), 
  
-    format("Disco ~w movido de C para B", [Disc]),
+    format("Disk ~w moved from C to B", [Disc]),
     nl,
     format("A : ~w , B: ~w , C: ~w", [X,Y2, Z2]),
     nl.
@@ -43,7 +43,7 @@ move([Disc],'A',_,'B', [X,Y,Z], [X2,Y2,Z], C , P,1) :-
     reverse(Y, Y1), 
     reverse([Head|Y1], Y2), 
  
-    format("Disco ~w movido de A para B", [Disc]),
+    format("Disk ~w moved from A to B", [Disc]),
     nl,
     format("A : ~w , B: ~w , C: ~w", [X2,Y2, Z]),
     nl.
@@ -55,7 +55,7 @@ move([Disc],'B',_,'A', [X,Y,Z], [X2,Y2,Z], C, P,1) :-
     reverse(X, X1), 
     reverse([Head|X1], X2), 
  
-    format("Disco ~w movido de B para A", [Disc]),
+    format("Disk ~w moved from B to A", [Disc]),
     nl,
     format("A : ~w , B: ~w , C: ~w", [X2,Y2, Z]),
     nl.
@@ -66,7 +66,7 @@ move([Disc],'C',_,'A', [X,Y,Z], [X2,Y,Z2], C, P,1) :-
     reverse(Body, Z2), 
     reverse(X, X1), 
     reverse([Head|X1], X2), 
-    format("Disco ~w movido de C para A", [Disc]),
+    format("Disk ~w moved from C to A", [Disc]),
     nl,
     format("A : ~w , B: ~w , C: ~w", [X2,Y, Z2]),
     nl.
@@ -78,7 +78,7 @@ move([Bottom|Rest],Start,Swap,Goal, LL, LL3, C, C3, 0) :-
     move(Rest,Start,Goal,Swap, LL, LL1, C, C1,1), 
     move([Bottom],Start,_,Goal, LL1, LL2, C1, C2,1),
     move(Rest,Swap,Start,Goal, LL2, LL3, C2, C3,1),
-    format("Numero de movimentos: ~w", C3).
+    format("Number of movements: ~w", C3).
  
 move([Bottom|Rest],Start,Swap,Goal, LL, LL3, C, C3, 1) :- 
     move(Rest,Start,Goal,Swap, LL, LL1, C, C1,1), 
@@ -86,19 +86,19 @@ move([Bottom|Rest],Start,Swap,Goal, LL, LL3, C, C3, 1) :-
     move(Rest,Swap,Start,Goal, LL2, LL3, C2, C3,1).
     
  
-hanoi(Listas) :-
-    move(Listas,'A','B','C', [Listas,[],[]], _, 0, _,0).
+hanoi(Lists) :-
+    move(Lists,'A','B','C', [Lists,[],[]], _, 0, _,0).
  
  
 start():-
-    write_ln("3 ou 4 torres?"),
+    write_ln("3 or 4 towers?"),
     read(Codes),
     
     (Codes == 3 ->
-        write_ln("Escreva a lista de discos por ordem decrescente. Ex: [4, 3, 2, 1]"),
+        write_ln("Write the disks list in descending order. Ex: [4, 3, 2, 1]"),
         read(Listas),
          hanoi(Listas); 
-         write_ln("Escreva o numero de discos"),
+         write_ln("Write the number of disks"),
          read(N),
          startT(N)).
     
